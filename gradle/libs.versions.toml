@@ -1,0 +1,36 @@
+[versions]
+springBoot = "3.5.3"
+springCloud = "2025.0.0"
+kotlin = "2.2.0"
+lombok = "1.18.38"
+# ... 其他版本
+
+# 2. [libraries] 区：定义具体的依赖库，引用上面的版本变量
+[libraries]
+# Spring Boot BOM (注意，我们用 platform() 引入时，会用这个定义)
+spring-boot-bom = { module = "org.springframework.boot:spring-boot-dependencies", version.ref = "springBoot" }
+# Spring Cloud BOM
+spring-cloud-bom = { module = "org.springframework.cloud:spring-cloud-dependencies", version.ref = "springCloud" }
+
+# Spring Boot 相关
+spring-boot-starter-web = { module = "org.springframework.boot:spring-boot-starter-web" }
+spring-boot-starter-test = { module = "org.springframework.boot:spring-boot-starter-test" }
+# Spring Cloud 相关 (注意：版本由BOM管理，这里不用指定)
+spring-cloud-starter-openfeign = { module = "org.springframework.cloud:spring-cloud-starter-openfeign" }
+# Lombok
+lombok = { module = "org.projectlombok:lombok", version.ref = "lombok" }
+# 其他库...
+# spring-boot-starter-data-jpa = { module = "org.springframework.boot:spring-boot-starter-data-jpa" }
+
+
+# 3. [plugins] 区：定义 Gradle 插件 (如果需要)
+[plugins]
+spring-boot = { id = "org.springframework.boot", version.ref = "springBoot" }
+spring-dependency-management = { id = "io.spring.dependency-management", version = "1.1.7" } # BOM管理插件
+kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+kotlin-spring = { id = "org.jetbrains.kotlin.plugin.spring", version.ref = "kotlin" }
+
+# 4. [bundles] 区 (可选): 将一组常用的依赖打包成一个“捆”，方便一起引入
+[bundles]
+# 例如，定义一个 web 相关的依赖包
+# web-essentials = ["spring-boot-starter-web", "some-other-web-lib"]
