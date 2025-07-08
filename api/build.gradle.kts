@@ -11,7 +11,8 @@ dependencyManagement {
 
 dependencies {
     // 为所有模块添加通用依赖
-    implementation("org.jetbrains.kotlin:kotlin-reflect")
+    implementation(libs.kotlin.reflect)
+    implementation(libs.kotlin.stdlib)
     implementation(libs.spring.boot.starter.web)
     // 使用 TOML 中定义的别名
     testImplementation(libs.spring.boot.starter.test)

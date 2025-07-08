@@ -16,6 +16,7 @@ subprojects {
     plugins.apply("io.spring.dependency-management")
 
     repositories {
+        mavenLocal()
         mavenCentral()
     }
 }
